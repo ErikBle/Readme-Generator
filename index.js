@@ -41,7 +41,12 @@ inquirer.prompt(questions).then(function(answers){
     // Gets the answers into small const variables
     // Also gets the badge url from user input
     const name = answers.username
-    const 
+    const title = answers.title
+    const description = answers.description
+    const install = answers.install
+    const usage = answers.usage
+    const license = answers.license
+    const contribute = answers.contribute
     const badgeTitle = answers.badgeTitle
     const badgeColor = answers.badgeColor
     const badgeURL = `https://img.shields.io/badge/${badgeTitle}-${badgeColor}`;
@@ -73,7 +78,8 @@ inquirer.prompt(questions).then(function(answers){
       <img src="${badgeURL}"></img>
       <img src="${avatar}"></img>
       <h2>${email}</h2>
-    
+      <p>${title} ${description} ${install} ${usage} ${license} ${contribute}
+      </p>
 
     </div>
   </body>
