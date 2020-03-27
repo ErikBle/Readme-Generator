@@ -14,6 +14,24 @@ const questions = [
     message: "Choose the color of your badge",
     name: "badgeColor",
     choices: ["green", "yellow", "orange", "red", "blue"]
+},{
+    message: "Enter your project title",
+    name: "title"
+},{
+    message: "Enter a description of your project",
+    name: "description"
+},{
+    message: "Enter any installion requirments",
+    name: "install"
+},{
+    message: "Enter how to use your app/project",
+    name: "usage"
+},{
+    message: "Enter the license info",
+    name: "license"
+},{
+    message: "Enter anyone who contributed to this project",
+    name: "contribute"
 },
 ];
 
@@ -23,12 +41,13 @@ inquirer.prompt(questions).then(function(answers){
     // Gets the answers into small const variables
     // Also gets the badge url from user input
     const name = answers.username
+    const 
     const badgeTitle = answers.badgeTitle
     const badgeColor = answers.badgeColor
     const badgeURL = `https://img.shields.io/badge/${badgeTitle}-${badgeColor}`;
     
     // Makes the axios call to github
-    // grabbing the username, profile pic, and email
+    // grabbing the profile pic, and email
     const queryURL = `https://api.github.com/users/${name}`;
     axios.get(queryURL).then(function(res){
       const avatar = res.data.avatar_url
