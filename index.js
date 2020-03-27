@@ -2,10 +2,8 @@ const fs = require("fs");
 const axios = require("axios");
 const inquirer = require("inquirer");
 const util = require("util");
-const writeFileAsync = util.promisify(fs.writeFile);
 
-function promptUser() {
-    return inquirer.prompt ([
+const questions = [
 {
     message: "Enter your GitHub username",
     name: "username"
@@ -18,23 +16,41 @@ function promptUser() {
     name: "badgeColor",
     choices: ["green", "yellow", "orange", "red", "blue"]
 },
-]);
-}
+];
 
-async function init() {
-    console.log("hi")
-    try {
-      const answers = await promptUser();
+inquirer.prompt(questions).then(function(answers){
+
+    const name = answers.username
+    const badgeTitle = answers.badgeTitle
+    const badgeColor = answers.badgeColor
+    const badgeURL = `https://img.shields.io/badge/${badgeTitle}-${badgeColor}`;
+    const HTML =
+     `
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>${name} Readme</title>
+  </head>
+  <body>
+    <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">${name}</h1>
+      <h2><img src="${badgeURL}"</img></h2>
+    </div>
+  </div>
+  </body>
+  </html>`;
   
-      const html = generateHTML(answers);
-  
-      await writeFileAsync(`${answers.name}.html`, html);
-  
-      console.log("Successfully wrote to index.html");
-    } catch(err) {
-      console.log(err);
-    }
-  }
-  
-  init();
-  
+const generateHTML = `${name}.html`
+
+fs.writeFile(generateHTML, HTML, function (err) {
+    if (err) {
+        console.log(err);
+    } else {
+        console.log("Successfully wrote html");
+    };
+})
+})
