@@ -1,7 +1,6 @@
 const fs = require("fs");
 const axios = require("axios");
 const inquirer = require("inquirer");
-const util = require("util");
 
 const questions = [
 {
@@ -18,12 +17,27 @@ const questions = [
 },
 ];
 
+
 inquirer.prompt(questions).then(function(answers){
 
+    // Gets the answers into small const variables
+    // Also gets the badge url from user input
     const name = answers.username
     const badgeTitle = answers.badgeTitle
     const badgeColor = answers.badgeColor
     const badgeURL = `https://img.shields.io/badge/${badgeTitle}-${badgeColor}`;
+    
+    // Makes the axios call to github
+    // grabbing the username, profile pic, and email
+    const queryURL = `https://api.github.com/users/${name}`;
+    axios.get(queryURL).then(function(res){
+      const avatar = res.data.avatar_url
+      let email = res.data.email
+      if (email == null){
+        email = "No email displayed"
+      }
+
+    // What the html page will look like
     const HTML =
      `
   <!DOCTYPE html>
@@ -35,22 +49,25 @@ inquirer.prompt(questions).then(function(answers){
     <title>${name} Readme</title>
   </head>
   <body>
-    <div class="jumbotron jumbotron-fluid">
     <div class="container">
       <h1 class="display-4">${name}</h1>
-      <h2><img src="${badgeURL}"</img></h2>
+      <img src="${badgeURL}"></img>
+      <img src="${avatar}"></img>
+      <h2>${email}</h2>
+    
+
     </div>
-  </div>
   </body>
   </html>`;
-  
-const generateHTML = `${name}.html`
 
+// Writes the info to the html file, giving it a unique name
+
+
+const generateHTML = `${name}.html`
 fs.writeFile(generateHTML, HTML, function (err) {
     if (err) {
         console.log(err);
-    } else {
-        console.log("Successfully wrote html");
-    };
+    }
+})
 })
 })
