@@ -70,14 +70,24 @@ inquirer.prompt(questions).then(function(answers){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <title>${name} Readme</title>
+    <style>
+    body {
+        background: lightgray;
+    }
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    </style>
+    <title>${title} Readme</title>
   </head>
   <body>
     <div class="container">
-      <h1 class="display-4">${name}</h1>
-      <img src="${badgeURL}"></img>
-      <img src="${avatar}"></img>
-      <h2>${email}</h2>
+      <h1 style="text-align:center">${title}</h1>
+      <img src="${avatar}" class="center" style="border: 4px solid black; height: 150px; width: 150px; ></img>
+      <img src="${badgeURL}" class="center"></img>
+      <p style="text-align:center">${email}</p>
       <p>${title} ${description} ${install} ${usage} ${license} ${contribute}
       </p>
 
