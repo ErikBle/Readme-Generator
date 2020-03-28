@@ -16,6 +16,6 @@ Then run "node index.js" to start the app.
 
 ## Example gifs:
 
-<img src="https://imgur.com/a/xQjBad0">
+<img src="https://github.com/ErikBle/Readme-Generator/blob/master/readme1.gif">
 
-<img src="https://imgur.com/a/UN2gBsT">
+<img src="https://github.com/ErikBle/Readme-Generator/blob/master/readme2.gif">
