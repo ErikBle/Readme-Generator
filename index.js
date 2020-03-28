@@ -93,15 +93,15 @@ inquirer.prompt(questions).then(function(answers){
       <img src="${badgeURL}" class="center"></img>
       <p style="text-align:center">${email}</p>
       <h2 class="under">${title}</h2>
-      <p class="under"> Description </p>
+      <p class="under"> Description: </p>
       <p> ${description} </p>
-      <p class="under"> Installion </p>
+      <p class="under"> Installion: </p>
       <p> ${install}</p>
-      <p class="under"> Usage </p>
+      <p class="under"> Usage: </p>
       <p> ${usage}</p>
-      <p class="under"> License </p>
+      <p class="under"> License: </p>
       <p> ${license}</p>
-      <p class="under"> Contributors </p>
+      <p class="under"> Contributors: </p>
       <p>${contribute}</p>
     </div>
   </body>
