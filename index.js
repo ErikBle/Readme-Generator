@@ -79,6 +79,10 @@ inquirer.prompt(questions).then(function(answers){
         margin-left: auto;
         margin-right: auto;
     }
+
+    .under{
+        text-decoration: underline;
+    }
     </style>
     <title>${title} Readme</title>
   </head>
@@ -88,12 +92,20 @@ inquirer.prompt(questions).then(function(answers){
       <img src="${avatar}" class="center" style="border: 4px solid black; height: 150px; width: 150px; ></img>
       <img src="${badgeURL}" class="center"></img>
       <p style="text-align:center">${email}</p>
-      <p>${title} ${description} ${install} ${usage} ${license} ${contribute}
-      </p>
-
+      <h2 class="under">${title}</h2>
+      <p class="under"> Description </p>
+      <p> ${description} </p>
+      <p class="under"> Installion </p>
+      <p> ${install}</p>
+      <p class="under"> Usage </p>
+      <p> ${usage}</p>
+      <p class="under"> License </p>
+      <p> ${license}</p>
+      <p class="under"> Contributors </p>
+      <p>${contribute}</p>
     </div>
   </body>
-  </html>`;
+  </html>`
 
 // Writes the info to the html file, giving it a unique name
 
