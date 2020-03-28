@@ -89,6 +89,7 @@ inquirer.prompt(questions).then(function(answers){
   <body>
     <div class="container">
       <h1 style="text-align:center">${title}</h1>
+      <h1 style="text-align:center"> Github name:</h1><p style="text-align:center; font-size:32px"><a href="https://github.com/${name}"> ${name}</a></p>
       <img src="${avatar}" class="center" style="border: 4px solid black; height: 150px; width: 150px; ></img>
       <img src="${badgeURL}" class="center"></img>
       <p style="text-align:center">${email}</p>
